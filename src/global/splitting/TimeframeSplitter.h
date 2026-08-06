@@ -44,8 +44,6 @@ struct TimeframeSplitter : public JEventUnfolder {
                                          "time resolution of Silicon detector in ns"};
   Parameter<float> timeResolution_MPGD{this, "timeResolution_MPGD", 30.0,
                                        "time resolution of MPGD detector in ns"};
-  // Parameter<float> timeResolution_ACLGad{this, "timeResolution_TOF", 0.03,
-  //                                     "time resolution of TOF detector in ns"};
   Parameter<float> timeResolution_ACLGad{this, "timeResolution_TOF", 20.0,
                                          "time resolution of TOF detector in ns"};
   Parameter<float> timeResolution_EMCal{this, "timeResolution_EMCal", 20.0,
@@ -288,89 +286,7 @@ struct TimeframeSplitter : public JEventUnfolder {
       "HcalFarForwardZDCRawHitAssociations",
       "LFHCALRawHitAssociations"};
 
-  // std::vector<std::string> m_calohitcontribution_collection_names = {
-  //     "B0ECalHitsContributions",
-  //     "EcalBarrelImagingHitsContributions",
-  //     "EcalBarrelScFiHitsContributions",
-  //     "EcalEndcapNHitsContributions",
-  //     "EcalEndcapPHitsContributions",
-  //     "EcalEndcapPInsertHitsContributions",
-  //     "EcalLumiSpecHitsContributions",
-  //     "EcalFarForwardZDCHitsContributions",
-  //     "HcalBarrelHitsContributions",
-  //     "HcalEndcapNHitsContributions",
-  //     "HcalEndcapPInsertHitsContributions",
-  //     "HcalFarForwardZDCHitsContributions",
-  //     "LFHCALHitsContributions",
-  //     "LumiDirectPCALHitsContributions"};
 
-  std::vector<std::string> m_calocluster_collection_names_in = {
-      "B0ECalClusters_aligned",
-      "EcalBarrelClusters_aligned",
-      "EcalEndcapNClusters_aligned",
-      "EcalEndcapPClusters_aligned",
-  };
-  // "EcalFarForwardZDCClusters_aligned",
-  // "EcalLumiSpecClusters_aligned",
-  // "HcalBarrelClusters_aligned",
-  // "HcalEndcapNClusters_aligned",
-  // "HcalEndcapPInsertClusters_aligned",
-  // "HcalFarForwardZDCClusters_aligned",
-  // "LFHCALClusters_aligned",
-  // "EcalBarrelImagingClusters_aligned",
-  // "EcalBarrelScFiClusters_aligned",
-  // "EcalEndcapNImagingClusters_aligned",
-  // "EcalEndcapPImagingClusters_aligned",
-  // "EcalFarForwardZDCImagingClusters_aligned",
-  // "EcalLumiSpecImagingClusters_aligned"
-
-  std::vector<std::string> m_calocluster_collection_names_out = {
-      "B0ECalClusters",
-      "EcalBarrelClusters",
-      "EcalEndcapNClusters",
-      "EcalEndcapPClusters",
-  };
-  // "EcalFarForwardZDCClusters",
-  // "EcalLumiSpecClusters",
-  // "HcalBarrelClusters",
-  // "HcalEndcapNClusters",
-  // "HcalEndcapPInsertClusters",
-  // "HcalFarForwardZDCClusters",
-  // "LFHCALClusters",
-  // "EcalBarrelImagingClusters",
-  // "EcalBarrelScFiClusters",
-  // "EcalEndcapNImagingClusters",
-  // "EcalEndcapPImagingClusters",
-  // "EcalFarForwardZDCImagingClusters",
-  // "EcalLumiSpecImagingClusters"
-
-  std::vector<std::string> m_caloclusterassociation_collection_names_in = {
-      "B0ECalClusterAssociations",
-      "EcalBarrelClusterAssociations",
-      "EcalEndcapNClusterAssociations",
-      "EcalEndcapPClusterAssociations",
-  };
-  // "HcalBarrelClusterAssociations",
-  // "HcalEndcapNClusterAssociations",
-  // "HcalEndcapPInsertClusterAssociations",
-  // "HcalFarForwardZDCClusterAssociations",
-  // "LFHCALClusterAssociations",
-  // "EcalBarrelImagingClusterAssociations",
-  // "EcalBarrelScFiClusterAssociations",
-
-  std::vector<std::string> m_caloclusterassociation_collection_names_out = {
-      "B0ECalClusterAssociations",
-      "EcalBarrelClusterAssociations",
-      "EcalEndcapNClusterAssociations",
-      "EcalEndcapPClusterAssociations",
-  };
-  // "HcalBarrelClusterAssociations",
-  // "HcalEndcapNClusterAssociations",
-  // "HcalEndcapPInsertClusterAssociations",
-  // "HcalFarForwardZDCClusterAssociations",
-  // "LFHCALClusterAssociations",
-  // "EcalBarrelImagingClusterAssociations",
-  // "EcalBarrelScFiClusterAssociations",
 
   PodioInput<edm4hep::EventHeader> m_event_header_in{this,
                                                      {.name = "EventHeader", .is_optional = true}};
@@ -398,16 +314,6 @@ struct TimeframeSplitter : public JEventUnfolder {
       this, {.names = m_rawhit_collection_names, .is_optional = true}};
   VariadicPodioOutput<edm4eic::RawTrackerHit> m_rawhit_out{this, m_rawhit_collection_names_out};
 
-  // VariadicPodioInput<edm4hep::SimCalorimeterHit> m_simcalorimeterhits_in{
-  //     this, {.names = m_simcalorimeterhit_collection_names, .is_optional = true}};
-  // VariadicPodioOutput<edm4hep::SimCalorimeterHit> m_simcalorimeterhits_out{
-  //     this, m_simcalorimeterhit_collection_names};
-
-  // VariadicPodioInput<edm4hep::CaloHitContribution> m_calohitcontributions_in{
-  //     this, {.names = m_calohitcontribution_collection_names, .is_optional = true}};
-  // VariadicPodioOutput<edm4hep::CaloHitContribution> m_calohitcontributions_out{
-  //     this, m_calohitcontribution_collection_names};
-
   VariadicPodioInput<edm4hep::RawCalorimeterHit> m_calorawhit_in{
       this, {.names = m_calorawhit_collection_names_in, .is_optional = true}};
   VariadicPodioOutput<edm4hep::RawCalorimeterHit> m_calorawhit_out{
@@ -428,15 +334,6 @@ struct TimeframeSplitter : public JEventUnfolder {
   VariadicPodioOutput<edm4eic::MCRecoCalorimeterHitAssociation> m_calorechitassociation_out{
       this, m_calorechitassociation_collection_names_out};
 
-  // VariadicPodioInput<edm4eic::Cluster> m_calocluster_in{
-  //     this, {.names = m_calocluster_collection_names_in, .is_optional = true}};
-  // VariadicPodioOutput<edm4eic::Cluster> m_calocluster_out{
-  //     this, m_calocluster_collection_names_out};
-
-  // VariadicPodioInput<edm4eic::MCRecoClusterParticleAssociation> m_caloclusterassociation_in{
-  //     this, {.names = m_caloclusterassociation_collection_names_in, .is_optional = true}};
-  // VariadicPodioOutput<edm4eic::MCRecoClusterParticleAssociation> m_caloclusterassociation_out{
-  //     this, m_caloclusterassociation_collection_names_out};
 
   PodioOutput<edm4hep::EventHeader> m_event_header_phy_out{this, "EventHeader_PHY"};
   PodioOutput<edm4hep::EventHeader> m_event_header_bkg_out{this, "EventHeader_BKG"};
@@ -454,8 +351,6 @@ struct TimeframeSplitter : public JEventUnfolder {
     SetChildLevel(JEventLevel::PhysicsEvent);
   }
 
-  // std::vector<std::tuple<size_t, const edm4hep::SimTrackerHitCollection*, size_t>>
-  //     m_hitStartIndices_simTracker;
 
   std::vector<std::tuple<size_t, const edm4eic::TrackerHitCollection*, size_t>>
       m_hitStartIndices_simTracker;
@@ -463,13 +358,7 @@ struct TimeframeSplitter : public JEventUnfolder {
       m_hitStartIndices_simCalorimeter;
 
   // == Global Variables =======================
-  size_t m_triggerDetSize = 10; // Number of detectors used for triggering
-  // Int_t m_detId[10] = {12, 13, 1, 4, 8, 9, 11, 14, 15, 16}; // TOF and MPGD, Silicon excluded
-  Int_t m_detId[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}; // TOF and MPGD, Silicon excluded
-
   bool bInitialLoop = true;
-  std::vector<std::vector<unsigned int>> m_vOrigHitId;
-  std::vector<std::vector<unsigned int>> m_vSameTSHitId;
 
   Int_t m_multiTriggerThreshold[4] = {1, 4, 20, 20};
   size_t iniTrkHitPoint[15]        = {0}; // B0Trk,
@@ -837,13 +726,6 @@ struct TimeframeSplitter : public JEventUnfolder {
   }
 
   Result Unfold(const JEvent& parent, JEvent& child, int child_idx) override {
-    // For QA　???
-    // std::vector<std::vector<Int_t>> vECalHitInTowerPhy;
-    // std::vector<std::vector<Int_t>> vECalHitInTowerBkg;
-    // std::vector<std::vector<Int_t>> vECalTowersPhy;
-    // std::vector<std::vector<Int_t>> vECalTowersBkg;
-    // For QA ???
-
     const float m_timeframe_width = timeframe_width();
     const float m_timesplit_width = timesplit_width();
 
@@ -884,9 +766,6 @@ struct TimeframeSplitter : public JEventUnfolder {
 
       Double_t prevMCTime = -9999.0; // temp check mc particle times
       for (const auto& mcparticle : *m_mcparticles_in()) {
-        // if (mcparticle.parents_begin() != 0)
-        // if(mcparticle.parents_size() > 0) continue;
-
         if (mcparticle.getGeneratorStatus() != 1)
           continue;
         if (std::abs(prevMCTime - mcparticle.getTime()) < 50.)
@@ -898,12 +777,6 @@ struct TimeframeSplitter : public JEventUnfolder {
       std::sort(m_vPhysCooTimes.begin(), m_vPhysCooTimes.end());
       auto last = std::unique(m_vPhysCooTimes.begin(), m_vPhysCooTimes.end());
       m_vPhysCooTimes.erase(last, m_vPhysCooTimes.end());
-      // for (size_t iPhysT = 0; iPhysT < m_vPhysCooTimes.size(); ++iPhysT) {
-      //   Double_t physCollTime = m_vPhysCooTimes[iPhysT];
-      //   Double_t tsTime       = iPhysT * timesplit_width();
-      //   // std::cout << "111<><>><><<><><<><<><><><> TF:TS = " << parent.GetEventNumber() << " : " << child_idx << ", physCollTime: " << physCollTime << ", tsTime: " << tsTime << std::endl;
-      // }
-
       // == e == For MC Trigger Efficiency Estimation ~~~~~~~~
     }
     // == e == Register hits of TOF and MPGD detectors in the time slice ==================
@@ -932,7 +805,6 @@ struct TimeframeSplitter : public JEventUnfolder {
       std::array<Double_t, 8> singleTrig{};
       std::array<Double_t, 8> singleTrigTime{};
 
-      // std::cout << "TF:TS = " << m_TFCount << ":" << child_idx << " Trigger1 <<><><><><><><><><><><><><<><><><><><><><><><><><><> "<< std::endl;
       // s // EndCap Cal Trigger
       EtaPhiGrid backEndCalGrid{};
       EtaPhiGrid backEndCalGridShifted{};
@@ -946,7 +818,6 @@ struct TimeframeSplitter : public JEventUnfolder {
           backEndCalGrid, backEndCalGridShifted, backEndIntTimesEtaPhi,
           backEndIntTimesEtaPhiShifted, 10, singleTrigTime[0]);
 
-      // std::cout << "TF:TS = " << m_TFCount << ":" << child_idx << " <><><><><> Trigger2 <<><><><><><><><><><><><><<><><><><><><><><><><><><> "<< std::endl;
       // s // EndCap Cal+Trk Match Trigger
       EtaPhiGrid backEndTrkGrid                          = {};
       EtaPhiGrid backEndTrkGridShifted                   = {};
@@ -961,7 +832,6 @@ struct TimeframeSplitter : public JEventUnfolder {
           backEndTrkGrid, backEndTrkGridShifted, backEndIntTimesEtaPhiMatched,
           backEndIntTimesEtaPhiMatchedShifted, 1, singleTrigTime[1]);
 
-      // std::cout << "TF:TS = " << m_TFCount << ":" << child_idx << " <><><><><> Trigger3 <<><><><><><><><><><><><><<><><><><><><><><><><><><> "<< std::endl;
       EtaPhiGrid barrelCalGrid                   = {};
       EtaPhiGrid barrelCalGridShifted            = {};
       EtaPhiTimeGrid barrelIntTimesEtaPhi        = {};
@@ -973,7 +843,6 @@ struct TimeframeSplitter : public JEventUnfolder {
           countGridCellsWithMultiplicity(barrelCalGrid, barrelCalGridShifted, barrelIntTimesEtaPhi,
                                          barrelIntTimesEtaPhiShifted, 10, singleTrigTime[2]);
 
-      // std::cout << "TF:TS = " << m_TFCount << ":" << child_idx << " <><><><><> Trigger4 <<><><><><><><><><><><><><<><><><><><><><><><><><><> "<< std::endl;
       EtaPhiGrid barrelTrkGrid                          = {};
       EtaPhiGrid barrelTrkGridShifted                   = {};
       EtaPhiTimeGrid barrelIntTimesEtaPhiMatched        = {};
@@ -997,7 +866,6 @@ struct TimeframeSplitter : public JEventUnfolder {
           barrelTrkGrid, barrelTrkGridShifted, barrelIntTimesEtaPhiMatched,
           barrelIntTimesEtaPhiMatchedShifted, 1, singleTrigTime[3]);
 
-      // std::cout << "TF:TS = " << m_TFCount << ":" << child_idx << " <><><><><> Trigger5 <<><><><><><><><><><><><><<><><><><><><><><><><><><> "<< std::endl;
       EtaPhiGrid frontEndCalGrid                   = {};
       EtaPhiGrid frontEndCalGridShifted            = {};
       EtaPhiTimeGrid frontEndIntTimesEtaPhi        = {};
@@ -1010,7 +878,6 @@ struct TimeframeSplitter : public JEventUnfolder {
           frontEndCalGrid, frontEndCalGridShifted, frontEndIntTimesEtaPhi,
           frontEndIntTimesEtaPhiShifted, 10, singleTrigTime[4]);
 
-      // std::cout << "TF:TS = " << m_TFCount << ":" << child_idx << " <><><><><> Trigger6 <<><><><><><><><><><><><><<><><><><><><><><><><><><> "<< std::endl;
       EtaPhiGrid frontEndTrkGrid                          = {};
       EtaPhiGrid frontEndTrkGridShifted                   = {};
       EtaPhiTimeGrid frontEndIntTimesEtaPhiMatched        = {};
@@ -1029,14 +896,12 @@ struct TimeframeSplitter : public JEventUnfolder {
           frontEndTrkGrid, frontEndTrkGridShifted, frontEndIntTimesEtaPhiMatched,
           frontEndIntTimesEtaPhiMatchedShifted, 1, singleTrigTime[5]);
 
-      // std::cout << "TF:TS = " << m_TFCount << ":" << child_idx << " <><><><><> Trigger7 <<><><><><><><><><><><><><<><><><><><><><><><><><><> "<< std::endl;
       const auto hitsB0 = count_hits_in_window(trackerHitCollsIn.at(kTrkB0), iniTrkHitPoint[kTrkB0],
                                                timeResolution_ACLGad(), tsTimeS, tsTimeE);
       iniTrkHitPoint[kTrkB0] = hitsB0.next_start_index;
       singleTrig[6]          = hitsB0.count;
       singleTrigTime[6]      = hitsB0.average_time();
 
-      // std::cout << "TF:TS = " << m_TFCount << ":" << child_idx << " <><><><><> Trigger8 <<><><><><><><><><><><><><<><><><><><><><><><><><><> "<< std::endl;
       Double_t totalZDCEnergy     = 0.0;
       Double_t totalZDCEnergyTime = 0.0;
       const auto* recHitsZDCECal  = caloRecHitCollsIn.at(kCalZDC);
@@ -1064,76 +929,6 @@ struct TimeframeSplitter : public JEventUnfolder {
       bMutipliTriggers[3]                   = etaPhiCalTriggerSum > 0 && singleTrig[7] > 0.005;
       bMutipliTriggers[4]                   = etaPhiCalTrkTriggerSum > 1;
       bMutipliTriggers[5]                   = etaPhiCalTriggerSum > 2;
-
-      // /??? QA
-      // Int_t physEventWeight = 2;
-      // for (auto it = m_vPhysCooTimes.begin(); it != m_vPhysCooTimes.end(); ++it) {
-      //   const Double_t physCollTime = *it;
-      //   if ((physCollTime + 20 > tsTimeS - 20) && (physCollTime - 10 < tsTimeE + 30)) {
-      //     physEventWeight = 1;
-      //     break;
-      //   }
-      // }
-      // Int_t numOfECalTowersX5  = 0;
-      // Int_t numOfECalTowersX10 = 0;
-      // for (size_t iEta = 0; iEta < kEtaPhiBins; ++iEta) {
-      //   for (size_t iPhi = 0; iPhi < kEtaPhiBins; ++iPhi) {
-      //     if (backEndCalGrid[iEta][iPhi] > 0 || barrelCalGrid[iEta][iPhi] > 0 ||
-      //         frontEndCalGrid[iEta][iPhi] > 0) {
-      //       if (physEventWeight == 1) {
-
-      //         std::vector<Int_t> vECalHitInTowerPhyRow = {backEndCalGrid[iEta][iPhi],
-      //                                                     barrelCalGrid[iEta][iPhi],
-      //                                                     frontEndCalGrid[iEta][iPhi]};
-      //         vECalHitInTowerPhy.push_back(vECalHitInTowerPhyRow);
-
-      //         if (backEndCalGrid[iEta][iPhi] > 4) {
-      //           numOfECalTowersX5++;
-      //           if (backEndCalGrid[iEta][iPhi] > 9)
-      //             numOfECalTowersX10++;
-      //         }
-      //         if (barrelCalGrid[iEta][iPhi] > 4) {
-      //           numOfECalTowersX5++;
-      //           if (barrelCalGrid[iEta][iPhi] > 9)
-      //             numOfECalTowersX10++;
-      //         }
-      //         if (frontEndCalGrid[iEta][iPhi] > 4) {
-      //           numOfECalTowersX5++;
-      //           if (frontEndCalGrid[iEta][iPhi] > 9)
-      //             numOfECalTowersX10++;
-      //         }
-      //       } else {
-      //         std::vector<Int_t> vECalHitInTowerBkgRow = {backEndCalGrid[iEta][iPhi],
-      //                                                     barrelCalGrid[iEta][iPhi],
-      //                                                     frontEndCalGrid[iEta][iPhi]};
-      //         vECalHitInTowerBkg.push_back(vECalHitInTowerBkgRow);
-
-      //         if (backEndCalGrid[iEta][iPhi] > 4) {
-      //           numOfECalTowersX5++;
-      //           if (backEndCalGrid[iEta][iPhi] > 9)
-      //             numOfECalTowersX10++;
-      //         }
-      //         if (barrelCalGrid[iEta][iPhi] > 4) {
-      //           numOfECalTowersX5++;
-      //           if (barrelCalGrid[iEta][iPhi] > 9)
-      //             numOfECalTowersX10++;
-      //         }
-      //         if (frontEndCalGrid[iEta][iPhi] > 4) {
-      //           numOfECalTowersX5++;
-      //           if (frontEndCalGrid[iEta][iPhi] > 9)
-      //             numOfECalTowersX10++;
-      //         }
-      //       }
-      //     }
-      //   }
-      // }
-      // if (physEventWeight == 1)
-      //   vECalTowersPhy.push_back(
-      //       {numOfECalTowersX5, numOfECalTowersX10, static_cast<int>(singleTrig[7] * 1000000)});
-      // else if (physEventWeight == 2)
-      //   vECalTowersBkg.push_back(
-      //       {numOfECalTowersX5, numOfECalTowersX10, static_cast<int>(singleTrig[7] * 1000000)});
-      // /??? QA
 
       if (!bMutipliTriggers[0] && !bMutipliTriggers[1] && !bMutipliTriggers[2] &&
           !bMutipliTriggers[3] && !bMutipliTriggers[4] && !bMutipliTriggers[5])
@@ -1170,10 +965,6 @@ struct TimeframeSplitter : public JEventUnfolder {
 
       // == s == Multiplisity Single Triggers =======================================
 
-      // == s == Geometrical Coincidence Triggers =====================================
-      // ===  Geometrical Coincidence ===
-      // == e == Geometrical Coincidence Triggers =====================================
-
       if (bMutipliTriggers[0] || bMutipliTriggers[1] || bMutipliTriggers[2] ||
           bMutipliTriggers[3] || bMutipliTriggers[4] || bMutipliTriggers[5])
         bTimesliceTrigger =
@@ -1183,40 +974,6 @@ struct TimeframeSplitter : public JEventUnfolder {
     }
     // == e == Time frame scan loop ==========================================================
 
-    // /??? QA <><><><><><><><><><><><><><>
-    // if (!vECalHitInTowerPhy.empty()) {
-    //   auto& oECalHitsInTowerPhy = m_ecalhitsintower_phy_out();
-    //   auto& oECalTowersPHY      = m_ecaltowers_phy_out();
-    //   for (size_t iTower = 0; iTower < vECalHitInTowerPhy.size(); ++iTower) {
-    //     auto entry = oECalHitsInTowerPhy->create();
-    //     entry.setEventNumber(vECalHitInTowerPhy[iTower][0]);
-    //     entry.setRunNumber(vECalHitInTowerPhy[iTower][1]);
-    //     entry.setTimeStamp(vECalHitInTowerPhy[iTower][2]);
-    //   }
-    //   for (size_t iTower = 0; iTower < vECalTowersPhy.size(); ++iTower) {
-    //     auto entry = oECalTowersPHY->create();
-    //     entry.setEventNumber(vECalTowersPhy[iTower][0]);
-    //     entry.setRunNumber(vECalTowersPhy[iTower][1]);
-    //     entry.setTimeStamp(vECalTowersPhy[iTower][2]);
-    //   }
-    // }
-    // if (!vECalHitInTowerBkg.empty()) {
-    //   auto& oECalHitsInTowerBkg = m_ecalhitsintower_bkg_out();
-    //   auto& oECalTowersBkg      = m_ecaltowers_bkg_out();
-    //   for (size_t iTower = 0; iTower < vECalHitInTowerBkg.size(); ++iTower) {
-    //     auto entry = oECalHitsInTowerBkg->create();
-    //     entry.setEventNumber(vECalHitInTowerBkg[iTower][0]);
-    //     entry.setRunNumber(vECalHitInTowerBkg[iTower][1]);
-    //     entry.setTimeStamp(vECalHitInTowerBkg[iTower][2]);
-    //   }
-    //   for (size_t iTower = 0; iTower < vECalTowersBkg.size(); ++iTower) {
-    //     auto entry = oECalTowersBkg->create();
-    //     entry.setEventNumber(vECalTowersBkg[iTower][0]);
-    //     entry.setRunNumber(vECalTowersBkg[iTower][1]);
-    //     entry.setTimeStamp(vECalTowersBkg[iTower][2]);
-    //   }
-    // }
-    // /??? QA <><><><><><><><><><><><><<>><><><><><
 
     m_bTrigger = bTimesliceTrigger;
     if (bTimesliceTrigger) {
