@@ -45,7 +45,7 @@ void InitPlugin(JApplication* app) {
   app->Add(new JOmniFactoryGeneratorT<LGADHitCalibration_factory>(
       "TOFBarrelCalibratedHits", {"TOFBarrelADCTDC"}, // Input data collection tags
       {"TOFBarrelCalibratedHits"},                    // Output data tag
-      {}, app, hit_level));                           // Hit reco default config for factories
+      {}, app));                                      // Hit reco default config for factories
 
   // cluster all hits in a sensor into one hit location
   // Currently it's just a simple weighted average

@@ -368,14 +368,14 @@ private:
           "TOFBarrelSharedRecHits",
           "TOFBarrelSharedRawHitAssociations",
           "TOFBarrelSharedRawHitLinks",
-          "TOFBarrelHits",
+          "TOFBarrelSharedHits",
           "TOFBarrelSharedRawHits",
       },
       {
           "TOFEndcapSharedRecHits",
           "TOFEndcapSharedRawHitAssociations",
           "TOFEndcapSharedRawHitLinks",
-          "TOFEndcapHits",
+          "TOFEndcapSharedHits",
           "TOFEndcapSharedRawHits",
       },
       {
